@@ -38,6 +38,7 @@ Pull an Image from Docker Hub
 
 ```bash
 docker pull nginx
+docker pull mysql
 ```
 Verify the downloaded image:
 ```bash
@@ -47,4 +48,5 @@ docker images
 Run a Container from the Pulled Image
 ```bash
 docker run -d -p 8080:80 nginx
+docker run -e MYSQL_ROOT_PASSWORD=root mysql
 ```
