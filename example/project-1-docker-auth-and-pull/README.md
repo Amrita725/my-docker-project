@@ -1,9 +1,10 @@
 ```md
-Authenticate with Docker Hub using Personal Access Token (PAT)
 
-Pull an image from Docker Hub
+This project is about pulling an Image from Docker Hub using PAT.
 
-Run a container from the pulled image
+## Docker Features Demonstrated
 
-Understand how Docker authentication works behind the scenes
-```
+- Authenticate with Docker Hub using Personal Access Token (PAT)
+- Pull an image from Docker Hub
+- Run a container from the pulled image
+- Understand how Docker authentication works behind the scenes
