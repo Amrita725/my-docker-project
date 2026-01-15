@@ -6,6 +6,7 @@ This project demonstrates containerizing a simple Flask web application using Do
 ## Concept Covered
 - Lightweight image using slim base and no pip cache
 - Application exposed on port 80
+- ENTRYPOINT -- defines the main executable of a Docker container.
 - AWS security groups
 - Docker logs
 
@@ -17,7 +18,7 @@ docker run -d -p 80:80 flask-docker-app
 
 ## Docker Logs
 docker logs <container_id> --- Used to inspect application output and runtime behavior.
-docker attach <container_id> --- Attach to Running Container (Use Ctrl + P + Q to detach safely without stopping the container.)
+docker attach <container_id> --- Attach to Running Container
 
 ## Learnings
 - Docker port mapping must align with cloud firewall rules  
