@@ -21,5 +21,5 @@ docker run java-docker-app
 - Java compilation can be done inside the container
 - Build + runtime mixed together (This pain is what **naturally leads to multi-stage Dockerfiles** later)
 - CMD vs RUN
-  RUN → build-time
-  CMD → runtime
+  RUN → build-time --- Build my application
+  CMD → runtime --- Run my application
