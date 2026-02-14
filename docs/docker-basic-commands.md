@@ -15,7 +15,9 @@ docker system prune
 List images   docker images  
 Pull image    docker pull nginx  
 Build image   docker build -t my-image .  
-Remove image  docker rmi image_id  
+Remove image  docker rmi image_id
+Image tag     docker image tag two-tier:latest amrita725/two-tier:latest -- docker image tag creates a new name (tag) for an existing Docker image.
+Push images   docker push amrita725/two-tier:latest  -- dockerhub login and then push the image 
 ```
 ## Containers  
 ```
