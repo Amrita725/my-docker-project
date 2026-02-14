@@ -181,3 +181,42 @@ docker compose up --build
 ```
 docker compose exec mysql bash
 ```
+
+# Question  
+
+Do I need to create the network and volume BEFORE running Docker Compose?  
+NO. You do NOT need to create them manually.Docker Compose will automatically create if they don’t already exist.
+
+How Docker Compose behaves?  
+Case 1:  Network / Volume does NOT exist  
+```
+volumes:
+  mysql-data:
+networks:
+  two-tier:
+```
+Then Docker Compose will create the network and volume. No manual work needed  
+projectname_mysql-data  
+projectname_two-tier  
+
+Case 2:  Network / Volume ALREADY exists (created manually)  
+
+Docker Compose will:  
+- NOT reuse them by default    
+- NOT attach automatically    
+- Create new ones with project prefix  
+
+How to reuse an EXISTING network or volume ?  
+
+You must explicitly mark them as external.
+```
+volumes:
+  mysql-data:
+    external: true
+
+networks:
+  two-tier:
+    external: true
+
+```
+Now Docker Compose will use the existing volume and network
