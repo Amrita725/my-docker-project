@@ -12,6 +12,12 @@ services :
       - mysql-data:/var/lib/mysql
     networks: 
       - two-tier
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
   
   flask-app:
     build:
@@ -24,8 +30,17 @@ services :
       MYSQL_USER: "root" 
       MYSQL_PASSWORD: "root"
       MYSQL_DB: "thoughts"
+    depends_on:
+      - mysql
     networks:
       - two-tier
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
 volumes:
   mysql-data:
