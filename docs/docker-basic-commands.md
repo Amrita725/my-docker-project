@@ -67,9 +67,9 @@ Remove everything unused:      docker system prune -a
 ```
 ## Docker Compose (basics)
 ```
-docker-compose up
-docker-compose up -d
-docker-compose down
+docker compose up
+docker compose up -d
+docker compose down
 ```
 
 
