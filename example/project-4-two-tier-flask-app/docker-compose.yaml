@@ -7,9 +7,10 @@ services :
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_DB: "thoughts"
+      MYSQL_DATABASE: "thoughts"
     volumes: 
       - mysql-data:/var/lib/mysql
+      - ./message.sql:/docker-entrypoint-initdb.d/message.sql
     networks: 
       - two-tier
     healthcheck:
@@ -31,16 +32,12 @@ services :
       MYSQL_PASSWORD: "root"
       MYSQL_DB: "thoughts"
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     networks:
       - two-tier
     restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
+    
 
 volumes:
   mysql-data:
