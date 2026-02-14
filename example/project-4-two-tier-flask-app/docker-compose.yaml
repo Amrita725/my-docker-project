@@ -1,0 +1,35 @@
+version: "3.8"
+services :
+  mysql:
+    container_name: mysql
+    image: mysql
+    ports :
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DB: "thoughts"
+    volumes: 
+      - mysql-data:/var/lib/mysql
+    networks: 
+      - two-tier
+  
+  flask-app:
+    build:
+      context: .
+    container_name: flask-app
+    ports:
+      - "5000:5000"
+    environment:
+      MYSQL_HOST: "mysql"
+      MYSQL_USER: "root" 
+      MYSQL_PASSWORD: "root"
+      MYSQL_DB: "thoughts"
+    networks:
+      - two-tier
+
+volumes:
+  mysql-data:
+
+networks:
+  two-tier: 
+
